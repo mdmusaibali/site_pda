@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/menu1.css" />
+<html>
+
+<body>
+  <script>function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    //hides conntent on clicking outside the box
+
+    window.onclick = function (event) {
+      if (!event.target.matches(".dropbtn")) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains("show")) {
+            openDropdown.classList.remove("show");
+          }
+        }
+      }
+    };
+
+    // window.open(
+    //   "http://127.0.0.1:5500/HTML5_AND_CSS3/another_post/menu1.html#",
+    //   "webpage",
+    //   "width=640px ,height=480px"
+    // );
+
+    function resizeToMinimum() {
+      var minimum = [640, 480];
+      var current = [window.outerWidth, window.outerHeight];
+      var restricted = [];
+      var i = 2;
+
+      while (i-- > 0) {
+        restricted[i] = minimum[i] > current[i] ? minimum[i] : current[i];
+      }
+
+      window.resizeTo(current[0], current[1]);
+    }
+
+    window.addEventListener("resize", resizeToMinimum, false);
+  </script>
+  <h1>POOJYA DODAPPA APPA COLLEGE OF ENGINEERING</h1>
+  <div class="middle">
+    <p class="para-text">Select your semester to register yourself</p>
+    <p class="para-text1">Last date to register is 15th June 2021. HURRY UP!</p>
+  </div>
+  <div class="button">
+    <button onclick="JavaScript:myFunction()" class="dropbtn">Click to select <span>&#62;</span></button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href=http://localhost:8080/sem1 target="_blank">Sem 1</a>
+      <a href=http://localhost:8080/sem2 target="_blank">Sem 2</a>
+      <a href=http://localhost:8080/sem3 target="_blank">Sem 3</a>
+      <a href=http://localhost:8080/sem4 target="_blank">Sem 4</a>
+      <a href=http://localhost:8080/sem5 target="_blank">Sem 5</a>
+      <a href=http://localhost:8080/sem6 target="_blank">Sem 6</a>
+      <a href=http://localhost:8080/sem7 target="_blank">Sem 7</a>
+      <a href=http://localhost:8080/sem8 target="_blank">Sem 8</a>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <form method="POST" action="/check">
+    <p class="para-text">Enter your VTU number to check your registration</p>
+    <input type="number" class="form1" min="1" max="8" name="semester" placeholder="Enter semester number" required>
+    <input type="text" class="form" name="vtunumber1" placeholder="Enter VTU number" required>
+    <button class="button1">Check</button>
+    </form>
+  </div>
+  
+</body>
+
+</html>
