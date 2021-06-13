@@ -1,7 +1,7 @@
 var express=require('express');
 var app=express();
 let port=process.env.PORT || 8080;
-app.post("/",function(err,res){
+app.get("/",function(err,res){
 res.send("Helllo");
 }):
 
