@@ -3,7 +3,7 @@ var mysql = require("mysql");
 var bodyparser = require("body-parser");
 var path = require("path");
 const { connect } = require("http2");
-
+let port=process.env.PORT || 8080;
 var pda = express();
 pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
