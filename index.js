@@ -12,7 +12,7 @@ pda.use(bodyparser.urlencoded({ extended: true }));
 var con = mysql.createConnection({
   hostname: "localhost",
   user: "root",
-  password: "musaibitis",
+  password: "type your database password(leave blank if there isn't any)",
   database: "pda_db",
 });
 
