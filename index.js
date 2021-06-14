@@ -10,7 +10,7 @@ pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
 
 var con = mysql.createConnection({
-  hostname: "192.168.56.1",
+  hostname: "localhost",
   user: "root",
   password: "SqlAdmin",
   database: "pda_db",
