@@ -9,12 +9,31 @@ pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
 
-var con = mysql.createConnection({
-  hostname: "localhost",
-  user: "root",
-  password: "SqlAdmin",
-  database: "pda_db",
-});
+// mysql://b4c6c26634f7a1:4ac9ac9a@us-cdbr-east-04.cleardb.com/heroku_b0c251f0958a4ed?reconnect=true
+var config={
+  host: 'us-cdbr-east-04.cleardb.com',
+  user: 'b4c6c26634f7a1',
+  password:'4ac9ac9a',
+  database:'heroku_b0c251f0958a4ed'
+};
+var con;
+function retryOnDisconnect(){
+    con=mysql.createConnection(config);
+    con.connect(function(err){
+      if(err){
+        console.log('DB disconnect: ',err);
+        setTimeout(retryOnDisconnect,2000);
+      }
+    });
+  con.on('error',function(err){
+    console.log('DB Error: ',err);
+    if(err.code=="PROTOCOL_CONNECTION_LOST"){
+      retryOnDisconnect();
+    }
+  });
+}
+
+retryOnDisconnect();
 
 pda.get("/", function (err, results) {
   results.render("menu1");
