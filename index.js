@@ -3,16 +3,16 @@ var mysql = require("mysql");
 var bodyparser = require("body-parser");
 var path = require("path");
 const { connect } = require("http2");
-let port=process.env.PORT || 8080;
+let port = process.env.PORT || 8080;
 var pda = express();
 pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
 
 var con = mysql.createConnection({
-  hostname: "localhost",
+  hostname: "192.168.56.1",
   user: "root",
-  password: "type your database password(leave blank if there isn't any)",
+  password: "SqlAdmin",
   database: "pda_db",
 });
 
