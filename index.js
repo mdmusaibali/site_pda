@@ -413,9 +413,9 @@ var path = require("path");
 const { connect } = require("http2");
 let port = process.env.PORT || 8080;
 var pda = express();
-app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "/public")));
-app.use(bodyparser.urlencoded({ extended: true }));
+pda.set("view engine", "ejs");
+pda.use(express.static(path.join(__dirname, "/public")));
+pda.use(bodyparser.urlencoded({ extended: true }));
 
 // var con = mysql.createConnection({
 //     host: 'localhost',
@@ -424,17 +424,18 @@ app.use(bodyparser.urlencoded({ extended: true }));
 //     database: 'webapp_db'
 // });
 
-app.get("/", function (requests, results) {
+pda.get("/", function (requests, results) {
 //   var q = 'SELECT COUNT(*) AS count from users'
 //   con.query(q, function (err, res) {
 //       if (err) throw err;
 //       var c = (res[0].count);
 //       //  results.send("We have "+c+" Users Registered");
-  var c = 5;
-  results.render("ghar", { count: c });
+//   var c = 5;
+//   results.render("ghar", { count: c });
+  results.send("yes");
 });
 
 
-app.listen(port, function () {
+pda.listen(port, function () {
   console.log("Connected to port 8080...");
 });
