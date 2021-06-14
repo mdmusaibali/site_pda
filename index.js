@@ -17,7 +17,8 @@ var con = mysql.createConnection({
 });
 
 pda.get("/", function (err, results) {
-  results.render("menu1");
+  results.send("It's ok");
+//   results.render("menu1");
 });
 
 pda.post("/check", function (req, res) {
