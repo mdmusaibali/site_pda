@@ -9,12 +9,11 @@ pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
 
-// mysql://b4c6c26634f7a1:4ac9ac9a@us-cdbr-east-04.cleardb.com/heroku_b0c251f0958a4ed?reconnect=true
 var config={
-  host: 'us-cdbr-east-04.cleardb.com',
-  user: 'b4c6c26634f7a1',
-  password:'4ac9ac9a',
-  database:'heroku_b0c251f0958a4ed'
+  host: 'cloud database host name',
+  user: 'database user name',
+  password:'password',
+  database:'database name'
 };
 var con;
 function retryOnDisconnect(){
