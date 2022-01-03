@@ -9,24 +9,24 @@ pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
 
-var config={
-  host: 'cloud database host name',
-  user: 'database user name',
-  password:'password',
-  database:'database name'
+var config = {
+  host: "localhost",
+  user: "root",
+  password: "musaib",
+  database: "students",
 };
 var con;
-function retryOnDisconnect(){
-    con=mysql.createConnection(config);
-    con.connect(function(err){
-      if(err){
-        console.log('DB disconnect: ',err);
-        setTimeout(retryOnDisconnect,2000);
-      }
-    });
-  con.on('error',function(err){
-    console.log('DB Error: ',err);
-    if(err.code=="PROTOCOL_CONNECTION_LOST"){
+function retryOnDisconnect() {
+  con = mysql.createConnection(config);
+  con.connect(function (err) {
+    if (err) {
+      console.log("DB disconnect: ", err);
+      setTimeout(retryOnDisconnect, 2000);
+    }
+  });
+  con.on("error", function (err) {
+    console.log("DB Error: ", err);
+    if (err.code == "PROTOCOL_CONNECTION_LOST") {
       retryOnDisconnect();
     }
   });
@@ -236,10 +236,29 @@ pda.post("/check", function (req, res) {
       break;
   }
 });
+
+// const databaseInsertor = function (sem) {
+//   pda.get(`/${sem}`, function (req, res) {
+//     res.render("student_registration");
+//     pda.post(`/${sem}`, function (req, res) {
+//       var student = {
+//         fname: req.body.fname,
+//         mname: req.body.mname,
+//         lname: req.body.lname,
+//         usn: req.body.vtunumber,
+//         mobile: req.body.phonenumber,
+//       };
+
+//       con.query(`INSERT INTO ${sem} SET ?`, student, function (err, results) {
+//         if (err) throw err;
+//         res.render("done");
+//       });
+//     });
+//   });
+// };
 //********************************* SEM 1 **************************************************************
 pda.get("/sem1", function (req, res) {
   res.render("student_registration");
-
   pda.post("/sem1", function (req, res) {
     var student = {
       fname: req.body.fname,
@@ -402,7 +421,15 @@ pda.get("/sem8", function (req, res) {
   });
 });
 
+//
+pda.post("/test", (req, resp) => {
+  if (req.body.semester == undefined) {
+    resp.redirect("/");
+  } else {
+    resp.redirect(`/${req.body.semester}`);
+  }
+});
+
 pda.listen(port, function () {
   console.log("Server Online ...");
 });
-
