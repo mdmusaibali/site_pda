@@ -13,7 +13,7 @@ var config = {
   host: "localhost",
   user: "root",
   password: "musaib",
-  database: "students",
+  database: "student",
 };
 var con;
 function retryOnDisconnect() {
@@ -51,15 +51,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -75,15 +81,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -99,15 +111,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -123,15 +141,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -147,15 +171,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -171,15 +201,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -195,15 +231,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -219,15 +261,21 @@ pda.post("/check", function (req, res) {
             res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
             var f = results[0].fname;
-            var m = results[0].mname;
-            var l = results[0].lname;
             var v = results[0].usn;
+            var address = results[0].studentaddress;
+            var admissionyear = results[0].admissionyear;
+            var cgpa = results[0].cgpa;
+            var sslc = results[0].sslc;
+            var puc = results[0].puc;
             var p = results[0].mobile;
             res.render("check", {
               fname: f,
-              mname: m,
-              lname: l,
               vtunumber: v,
+              address: address,
+              admissionyear: admissionyear,
+              cgpa: cgpa,
+              sslc: sslc,
+              puc: puc,
               phonenumber: p,
             });
           }
@@ -251,7 +299,7 @@ pda.post("/check", function (req, res) {
 
 //       con.query(`INSERT INTO ${sem} SET ?`, student, function (err, results) {
 //         if (err) throw err;
-//         res.render("done");
+//         res.redirect("/");
 //       });
 //     });
 //   });
@@ -262,15 +310,18 @@ pda.get("/sem1", function (req, res) {
   pda.post("/sem1", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem1 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -282,15 +333,18 @@ pda.get("/sem2", function (req, res) {
   pda.post("/sem2", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem2 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -303,15 +357,18 @@ pda.get("/sem3", function (req, res) {
   pda.post("/sem3", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem3 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -324,15 +381,18 @@ pda.get("/sem4", function (req, res) {
   pda.post("/sem4", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem4 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -345,15 +405,18 @@ pda.get("/sem5", function (req, res) {
   pda.post("/sem5", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem5 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -366,15 +429,18 @@ pda.get("/sem6", function (req, res) {
   pda.post("/sem6", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem6 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -387,15 +453,18 @@ pda.get("/sem7", function (req, res) {
   pda.post("/sem7", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem7 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
@@ -408,15 +477,18 @@ pda.get("/sem8", function (req, res) {
   pda.post("/sem8", function (req, res) {
     var student = {
       fname: req.body.fname,
-      mname: req.body.mname,
-      lname: req.body.lname,
       usn: req.body.vtunumber,
+      studentaddress: req.body.address,
+      admissionyear: req.body.year,
+      cgpa: req.body.cgpa,
+      sslc: req.body.sslc,
+      puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
 
     con.query("INSERT INTO sem8 SET ?", student, function (err, results) {
       if (err) throw err;
-      res.render("done");
+      res.redirect("/");
     });
   });
 });
