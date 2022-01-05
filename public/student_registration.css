@@ -27,6 +27,11 @@ body {
   gap: 1.8rem;
   border-radius: 0.4rem;
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
+
+  animation-name: anim;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
 }
 .paratext {
   letter-spacing: 2px;
@@ -59,4 +64,15 @@ button {
 button:hover {
   color: white;
   background-color: black;
+}
+
+@keyframes anim{
+  from{
+    transform: translateY(-7%);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

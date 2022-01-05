@@ -27,6 +27,8 @@
           class="form"
           name="vtunumber"
           placeholder="Enter your USN number"
+          maxlength="10"
+          minlength="10"
           required
         />
 
@@ -43,12 +45,14 @@
           class="form"
           name="year"
           placeholder="Admission year"
+          required
         />
 
         <input
           type="number"
           class="form"
           name="cgpa"
+          step="0.01"
           placeholder="Previous semester CGPA(if present)"
         />
 

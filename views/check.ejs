@@ -1,26 +1,69 @@
-<link rel="stylesheet" href="check.css" />
-<link
-  href="https://fonts.googleapis.com/css2?family=Nova+Slim&display=swap"
-  rel="stylesheet"
-/>
 <html>
-  <body>
-    <div class="container">
-      <h1><strong>Student registration information</strong></h1>
-      <div class="details">
-        <p>
-          <strong
-            >First Name : <%=fname%> <br />
-            VTU number : <%=vtunumber%> <br />
-            Address : <%=address%><br />
-            Admission Year : <%=admissionyear%><br />
-            CGPA : <%=cgpa%><br />
-            SSLC reg.no : <%=sslc%><br />
-            PUC reg.no : <%=puc%><br />
-            Phone Number : <%=phonenumber%> <br
-          /></strong>
-        </p>
-      </div>
-    </div>
-  </body>
+
+<head>
+  <link rel="stylesheet" href="check.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="heading"><strong>Student registration information</strong></h1>
+    <table>
+      <tr>
+        <td>First Name</td>
+        <td>
+          <%=fname%>
+        </td>
+      </tr>
+      <tr>
+        <td>VTU number</td>
+        <td>
+          <%=vtunumber%>
+        </td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>
+          <%=address%>
+        </td>
+      </tr>
+      <tr>
+        <td>Admission year</td>
+        <td>
+          <%=admissionyear%>
+        </td>
+      </tr>
+      <tr>
+        <td>CGPA</td>
+        <td>
+          <%=cgpa%>
+        </td>
+      </tr>
+      <tr>
+        <td>SSLC reg.no</td>
+        <td>
+          <%=sslc%>
+        </td>
+      </tr>
+      <tr>
+        <td>PUC reg.no</td>
+        <td>
+          <%=puc%>
+        </td>
+      </tr>
+      <tr>
+        <td>Phone Number</td>
+        <td>
+          <%=phonenumber%>
+        </td>
+      </tr>
+    </table>
+
+    <a href="/" class="button">Home</a>
+  </div>
+</body>
+
 </html>

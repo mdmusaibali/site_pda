@@ -9,10 +9,11 @@ pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
 
+var currentYear = new Intl.DateTimeFormat('en-IN', { year: 'numeric' }).format(new Date());
 var config = {
   host: "localhost",
   user: "root",
-  password: "musaib",
+  password: "rehaan",
   database: "student",
 };
 var con;
@@ -319,10 +320,17 @@ pda.get("/sem1", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem1 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem1 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -342,10 +350,17 @@ pda.get("/sem2", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem2 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem2 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -366,10 +381,17 @@ pda.get("/sem3", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem3 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem3 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -390,10 +412,17 @@ pda.get("/sem4", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem4 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem4 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -414,10 +443,17 @@ pda.get("/sem5", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem5 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem5 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -438,10 +474,17 @@ pda.get("/sem6", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem6 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem6 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -462,10 +505,17 @@ pda.get("/sem7", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    con.query("INSERT INTO sem7 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem7 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -485,11 +535,22 @@ pda.get("/sem8", function (req, res) {
       puc: req.body.puc,
       mobile: req.body.phonenumber,
     };
+    console.log(req.body.year);
+    console.log(typeof req.body.year);
+    console.log(typeof +req.body.year);
 
-    con.query("INSERT INTO sem8 SET ?", student, function (err, results) {
-      if (err) throw err;
-      res.redirect("/");
-    });
+
+    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
+      console.log('Oh You Are Mad I think : XD');
+      res.send('ERR_WRONG_DETAILS_PROVIDED');
+    }
+    else {
+
+      con.query("INSERT INTO sem8 SET ?", student, function (err, results) {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    }
   });
 });
 
@@ -505,3 +566,8 @@ pda.post("/test", (req, resp) => {
 pda.listen(port, function () {
   console.log("Server Online ...");
 });
+
+
+
+
+console.log();
