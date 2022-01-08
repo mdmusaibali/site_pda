@@ -8,14 +8,18 @@ var pda = express();
 pda.set("view engine", "ejs");
 pda.use(express.static(path.join(__dirname, "/public")));
 pda.use(bodyparser.urlencoded({ extended: true }));
+var message = "";
+var currentYear = new Intl.DateTimeFormat("en-IN", { year: "numeric" }).format(
+  new Date()
+);
 
-var currentYear = new Intl.DateTimeFormat('en-IN', { year: 'numeric' }).format(new Date());
 var config = {
   host: "localhost",
   user: "root",
-  password: "rehaan",
+  password: "musaib",
   database: "student",
 };
+
 var con;
 function retryOnDisconnect() {
   con = mysql.createConnection(config);
@@ -25,6 +29,7 @@ function retryOnDisconnect() {
       setTimeout(retryOnDisconnect, 2000);
     }
   });
+
   con.on("error", function (err) {
     console.log("DB Error: ", err);
     if (err.code == "PROTOCOL_CONNECTION_LOST") {
@@ -36,7 +41,8 @@ function retryOnDisconnect() {
 retryOnDisconnect();
 
 pda.get("/", function (err, results) {
-  results.render("menu1");
+  results.render("menu1", { msg: message });
+  message = "";
 });
 
 pda.post("/check", function (req, res) {
@@ -49,8 +55,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -79,8 +88,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -109,8 +121,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -139,8 +154,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -169,8 +187,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -199,8 +220,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -229,8 +253,11 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
+            // res.send("ERR_REGISTRATION_NOT_FOUND");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -259,8 +286,10 @@ pda.post("/check", function (req, res) {
         chk,
         function (err, results) {
           if (results[0] == undefined) {
-            res.send("ERR_REGISTRATION_NOT_FOUND");
+            message = "User not found!";
+            res.redirect("/");
           } else {
+            message = "";
             var f = results[0].fname;
             var v = results[0].usn;
             var address = results[0].studentaddress;
@@ -320,12 +349,15 @@ pda.get("/sem1", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem1 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -350,12 +382,15 @@ pda.get("/sem2", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem2 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -381,12 +416,15 @@ pda.get("/sem3", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem3 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -412,12 +450,15 @@ pda.get("/sem4", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem4 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -443,12 +484,15 @@ pda.get("/sem5", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem5 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -474,12 +518,15 @@ pda.get("/sem6", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem6 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -505,12 +552,15 @@ pda.get("/sem7", function (req, res) {
       mobile: req.body.phonenumber,
     };
 
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem7 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -539,13 +589,15 @@ pda.get("/sem8", function (req, res) {
     console.log(typeof req.body.year);
     console.log(typeof +req.body.year);
 
-
-    if (req.body.cgpa > 10 || req.body.cgpa < 0 || +req.body.year < 1975 || +req.body.year > currentYear) {
-      console.log('Oh You Are Mad I think : XD');
-      res.send('ERR_WRONG_DETAILS_PROVIDED');
-    }
-    else {
-
+    if (
+      req.body.cgpa > 10 ||
+      req.body.cgpa < 0 ||
+      +req.body.year < 1975 ||
+      +req.body.year > currentYear
+    ) {
+      console.log("Oh You Are Mad I think : XD");
+      res.send("ERR_WRONG_DETAILS_PROVIDED");
+    } else {
       con.query("INSERT INTO sem8 SET ?", student, function (err, results) {
         if (err) throw err;
         res.redirect("/");
@@ -567,7 +619,8 @@ pda.listen(port, function () {
   console.log("Server Online ...");
 });
 
-
-
-
 console.log();
+// MADE BY :-
+// FAISAL
+// FAIZAN
+// ANNAS
